@@ -6,6 +6,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import net.adamhilton.daggerkotlinexampleapp.App
 import net.adamhilton.daggerkotlinexampleapp.R
 
 class MainActivity : AppCompatActivity(), MainScreenContract.View {
@@ -19,10 +20,6 @@ class MainActivity : AppCompatActivity(), MainScreenContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        initializeUi()
-    }
-
-    private fun initializeUi() {
         presenter = MainPresenter(this)
     }
 
