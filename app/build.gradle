@@ -12,7 +12,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "net.adamhilton.daggerkotlinexampleapp.MockAppRunner"
     }
     buildTypes {
         release {
@@ -26,6 +26,10 @@ android {
     }
 }
 
+final dagger_version = '2.7'
+final butterknife_version = '8.4.0'
+final runner_version = '0.5'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -36,14 +40,21 @@ dependencies {
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    kapt 'com.google.dagger:dagger-compiler:2.7'
-    compile 'com.google.dagger:dagger:2.7'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compile "com.google.dagger:dagger:$dagger_version"
 
     provided 'javax.annotation:jsr250-api:1.0'
 
-    compile 'com.jakewharton:butterknife:8.4.0'
-    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile "com.jakewharton:butterknife:$butterknife_version"
+    kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
 
-    testCompile 'org.mockito:mockito-core:2.2.22'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.2.22'
+    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    testCompile "com.android.support.test:runner:$runner_version"
+    testCompile "com.android.support.test:rules:$runner_version"
+    testCompile 'com.android.support:support-annotations:25.0.1'
+
 }
