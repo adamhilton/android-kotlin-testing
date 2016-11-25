@@ -9,22 +9,22 @@ import net.adamhilton.daggerkotlinexampleapp.injection.module.AppModule
 
 open class App : Application() {
 
-    companion object {
-        @JvmStatic lateinit var Instance: App
-        @JvmStatic lateinit var AppComponent: AppComponent
-        @JvmStatic lateinit var DataService: DataService
-    }
+    val Instance: App
+        get() = this
+
+    val AppComponent: AppComponent
+        get() = createAppComponent()
+
+    val DataService: DataService
+        get() = AppComponent.dataService()
 
     @CallSuper
     override fun onCreate() {
         super.onCreate()
-        Instance = this
-        createAppComponent()
-        DataService = AppComponent.dataService()
     }
 
-    open protected fun createAppComponent() {
-        AppComponent = DaggerAppComponent.builder()
+    open protected fun createAppComponent(): AppComponent {
+        return DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
     }

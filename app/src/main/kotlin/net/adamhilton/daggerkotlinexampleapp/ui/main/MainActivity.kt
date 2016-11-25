@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), MainScreenContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, (application as App).DataService)
     }
 
     @OnClick(R.id.get_data_button)
