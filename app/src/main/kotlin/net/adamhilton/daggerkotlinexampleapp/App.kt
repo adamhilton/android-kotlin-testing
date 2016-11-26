@@ -8,9 +8,7 @@ import net.adamhilton.daggerkotlinexampleapp.injection.module.AppModule
 
 open class App : Application() {
 
-    companion object {
-        @JvmStatic lateinit var appComponent: AppComponent
-    }
+    lateinit var appComponent: AppComponent
 
     @CallSuper
     override fun onCreate() {

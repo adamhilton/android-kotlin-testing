@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MainScreenContract.View {
         ButterKnife.bind(this)
 
         DaggerMainScreenComponent.builder()
-                .appComponent(App.appComponent)
+                .appComponent((application as App).appComponent)
                 .mainScreenModule(MainScreenModule(this))
                 .build()
                 .inject(this)
