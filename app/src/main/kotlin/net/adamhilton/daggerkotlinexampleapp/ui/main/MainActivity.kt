@@ -8,10 +8,14 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import net.adamhilton.daggerkotlinexampleapp.App
 import net.adamhilton.daggerkotlinexampleapp.R
+import net.adamhilton.daggerkotlinexampleapp.injection.component.DaggerMainScreenComponent
+import net.adamhilton.daggerkotlinexampleapp.injection.module.MainScreenModule
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainScreenContract.View {
 
-    lateinit private var presenter: MainScreenContract.Presenter
+    @Inject
+    lateinit var presenter: MainPresenter
 
     @BindView(R.id.data)
     lateinit var data: TextView
@@ -20,7 +24,12 @@ class MainActivity : AppCompatActivity(), MainScreenContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        presenter = MainPresenter(this)
+
+        DaggerMainScreenComponent.builder()
+                .appComponent((application as App).appComponent)
+                .mainScreenModule(MainScreenModule(this))
+                .build()
+                .inject(this)
     }
 
     @OnClick(R.id.get_data_button)
