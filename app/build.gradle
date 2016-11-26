@@ -12,7 +12,9 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "net.adamhilton.daggerkotlinexampleapp.MockAppRunner"
+        com.android.ddmlib.DdmPreferences.setTimeOut(60000)
     }
     buildTypes {
         release {
@@ -24,6 +26,10 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
