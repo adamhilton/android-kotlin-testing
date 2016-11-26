@@ -1,4 +1,4 @@
-# Dagger 2, Kotlin, and Testing
+# a small kotlin android project for learning testing 
 
 [![CircleCI](https://circleci.com/gh/Felsig/android-kotlin-testing/tree/master.svg?style=svg)](https://circleci.com/gh/Felsig/android-kotlin-testing/tree/master)
 
