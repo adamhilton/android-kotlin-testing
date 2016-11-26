@@ -57,4 +57,5 @@ dependencies {
     testCompile "com.android.support.test:rules:$runner_version"
     testCompile 'com.android.support:support-annotations:25.0.1'
 
+    compile 'org.jetbrains.kotlin:kotlin-reflect:1.0.5-2'
 }
