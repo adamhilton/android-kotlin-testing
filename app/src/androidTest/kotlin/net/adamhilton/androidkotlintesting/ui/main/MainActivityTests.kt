@@ -9,6 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import net.adamhilton.androidkotlintesting.R
+import net.adamhilton.androidkotlintesting.data.remote.MockDataService
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,7 +26,7 @@ class MainActivityTests {
         activityRule.launchActivity(Intent())
         onView(withId(R.id.get_data_button)).perform(click())
         onView(withId(R.id.data))
-                .check(matches(withText("Hello from MockDataService class!")))
+                .check(matches(withText(MockDataService.MockResponse)))
 
     }
 }
