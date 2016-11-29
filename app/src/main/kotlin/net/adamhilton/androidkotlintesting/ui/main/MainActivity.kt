@@ -8,6 +8,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import net.adamhilton.androidkotlintesting.App
 import net.adamhilton.androidkotlintesting.R
+import net.adamhilton.androidkotlintesting.injection.component.AppComponent
 import net.adamhilton.androidkotlintesting.injection.component.DaggerMainScreenComponent
 import net.adamhilton.androidkotlintesting.injection.module.MainScreenModule
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainScreenContract.View {
         ButterKnife.bind(this)
 
         DaggerMainScreenComponent.builder()
-                .appComponent((application as App).appComponent)
+                .appComponent(App.appComponent)
                 .mainScreenModule(MainScreenModule(this))
                 .build()
                 .inject(this)

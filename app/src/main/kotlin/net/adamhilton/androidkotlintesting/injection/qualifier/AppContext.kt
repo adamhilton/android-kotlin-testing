@@ -4,4 +4,4 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention
-annotation class AppContext
+annotation class ppContext

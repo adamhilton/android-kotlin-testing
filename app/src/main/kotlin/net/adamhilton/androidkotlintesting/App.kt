@@ -4,11 +4,13 @@ import android.app.Application
 import android.support.annotation.CallSuper
 import net.adamhilton.androidkotlintesting.injection.component.AppComponent
 import net.adamhilton.androidkotlintesting.injection.component.DaggerAppComponent
-import net.adamhilton.androidkotlintesting.injection.module.AppModule
 
 open class App : Application() {
 
-    lateinit var appComponent: AppComponent
+    companion object {
+        @JvmStatic lateinit  var appComponent: AppComponent
+            private set
+    }
 
     @CallSuper
     override fun onCreate() {
@@ -17,9 +19,7 @@ open class App : Application() {
     }
 
     open protected fun createAppComponent(): AppComponent {
-        return DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
+        return DaggerAppComponent.builder().build()
     }
 
 }
